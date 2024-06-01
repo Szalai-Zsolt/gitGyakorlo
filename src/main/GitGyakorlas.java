@@ -23,8 +23,10 @@ public class GitGyakorlas {
            megszamlalasBemutatasa();
            minKivalasztBemutatasa();
            maxKivalasztBemutatasa();
+           kivalasztasBemutatasa();
            eldontes_LegalabbEgyBemutatasa();
            eldontes_OsszesBemutatasa();
+           linearisKeresesBemutatasa();
 
     } 
     
@@ -48,11 +50,15 @@ public class GitGyakorlas {
    
     }
 
+        private static void kivalasztasBemutatasa() {
+       konzolraIr("");
+        }
+
     private static void eldontes_LegalabbEgyBemutatasa() {
         if (eldontes_LegalabbEgy()){
-            konzolraIr("Van benne 10 érték\n");
+            konzolraIr("Van benne páratlan érték\n");
         } else {
-            konzolraIr("Nincs benne 10 érték\n");
+            konzolraIr("Nincs benne páratlan érték\n");
         }
     }
 
@@ -65,6 +71,15 @@ public class GitGyakorlas {
         
     }
    
+    private static void linearisKeresesBemutatasa() {
+      if(linearisKereses()>0){
+            konzolraIr("A keresett elem helye: " + linearisKereses());
+            konzolraIr("Értéke: " + sorozat[linearisKereses()]);
+        }else{
+            konzolraIr("nincs a keresésnek megfelelő elem:");
+        }
+    }
+    
     private static int osszegzes(){
        int osszeg = 0;
         
@@ -109,14 +124,19 @@ public class GitGyakorlas {
     }
     
     private static int kivalasztas(){
-        return 0;
+        int i=0;
+        int N=sorozat.length;
+        while(sorozat[i] >=-5){
+            i++;
+        }
+        return i;
     }
     
     private static boolean eldontes_LegalabbEgy(){
         int N = sorozat.length;
-        int ker = 0;
+      
         int i = 0;
-        while(i < N && !(sorozat[i] > ker)){
+        while(i < N && !(sorozat[i] % 2 == 1 )){
             i++;
         }
         boolean valasz = i < N;  
@@ -140,7 +160,21 @@ public class GitGyakorlas {
     }
     
     private static int linearisKereses(){
-        return -1;
+        int N = sorozat.length;
+        int ker = 15;
+        
+        int i = 0;
+        while(i < N && !(sorozat[i] > ker)){
+            i++;
+        }
+       
+        
+        if(i < N){
+               return i;
+        } else{
+            return -1;
+        }
+            
     }
     
     static void tombFeltoltes(){
@@ -160,6 +194,8 @@ public class GitGyakorlas {
         }
         System.out.println("");
     }
+
+
 
 
 
