@@ -12,11 +12,59 @@ public class GitGyakorlas {
 
     private static void feladatok() {
        tombFeltoltes();
-       osszegzes();
-       megszamlalas();
-       minKivalaszt();
+       konzolraIr("A sorozat elemei ");  
+       kiirTomb(sorozat);
+       progTetelekFelhasznalasa();
+     
     }
 
+        private static void progTetelekFelhasznalasa() {
+           osszegzesBemutatasa();
+           megszamlalasBemutatasa();
+           minKivalasztBemutatasa();
+           maxKivalasztBemutatasa();
+           eldontes_LegalabbEgyBemutatasa();
+           eldontes_OsszesBemutatasa();
+
+    } 
+    
+    private static void osszegzesBemutatasa() {
+               
+        konzolraIr("a sorozat Összege: " + osszegzes() + "\n");
+     }
+
+    private static void megszamlalasBemutatasa() {
+        konzolraIr("A páros számok darabszáma: " + megszamlalas() + "\n");
+        
+    }
+
+    private static void minKivalasztBemutatasa() {
+        konzolraIr("A legkisebb érték indexe: " + minKivalaszt() + "\n");
+    
+    }
+
+    private static void maxKivalasztBemutatasa() {
+        konzolraIr("A legnagyobb érték indexe: " + maxKivalaszt() + "\n");
+   
+    }
+
+    private static void eldontes_LegalabbEgyBemutatasa() {
+        if (eldontes_LegalabbEgy()){
+            konzolraIr("Van benne 10 érték\n");
+        } else {
+            konzolraIr("Nincs benne 10 érték\n");
+        }
+    }
+
+    private static void eldontes_OsszesBemutatasa() {
+        if (eldontes_Osszes()){
+            konzolraIr("Nem egyezik az összes érték\n");
+        } else {
+            konzolraIr("Egyezik az összes érték\n");
+        }
+        
+    }
+   
     private static int osszegzes(){
        int osszeg = 0;
         
@@ -24,7 +72,7 @@ public class GitGyakorlas {
             osszeg += sorozat[i];
         }
        
-       konzolraIr("a sorozat Összege: " + osszeg + "\n");
+
        return osszeg;
     }
     
@@ -35,7 +83,6 @@ public class GitGyakorlas {
                 db++; 
             }
         }
-        konzolraIr("A páros számok darabszáma: " + db + "\n");
         return db;
     }
     
@@ -47,7 +94,6 @@ public class GitGyakorlas {
                 minIndex = i;
             }
         }
-        konzolraIr("A legkisebb érték indexe: " + minIndex + "\n");
         return minIndex;
     }
     
@@ -59,7 +105,6 @@ public class GitGyakorlas {
                 maxIndex = i;
             }
         }
-        konzolraIr("A legnagyobb érték indexe: " + maxIndex + "\n");
         return maxIndex;
     }
     
@@ -68,11 +113,30 @@ public class GitGyakorlas {
     }
     
     private static boolean eldontes_LegalabbEgy(){
-        return false;
+        int N = sorozat.length;
+        int ker = 0;
+        int i = 0;
+        while(i < N && !(sorozat[i] > ker)){
+            i++;
+        }
+        boolean valasz = i < N;  
+        
+    
+        return valasz;
     }
     
     private static boolean eldontes_Osszes(){
-        return false;
+        
+        int N = sorozat.length;
+        int ker = -10;
+        int i = 0;
+        while(i < N && (sorozat[i] > ker)){
+            i++;
+        }
+        boolean valasz = i >= N;
+        
+        
+        return valasz;
     }
     
     private static int linearisKereses(){
@@ -89,5 +153,15 @@ public class GitGyakorlas {
     private static void konzolraIr(String kimenet) {
         System.out.println(kimenet);    
     }
-    
+     private static void kiirTomb(int[] tomb) {
+        
+         for (int i = 0; i < tomb.length; i++) {
+            System.out.print(tomb[i] + " ");
+        }
+        System.out.println("");
+    }
+
+
+
+   
 }
